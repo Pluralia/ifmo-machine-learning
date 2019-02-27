@@ -6,7 +6,7 @@ from KMeans import kmeans
 c_df = pd.read_csv('blobs.csv')
 data = c_df.values.astype(np.float32)
 
-cluster_number = 6
+cluster_number = 5
 labels, models = kmeans(data, cluster_number)
 
 colors = ['b', 'r', 'g', 'c', 'm', 'y', 'silver', 'lime']
