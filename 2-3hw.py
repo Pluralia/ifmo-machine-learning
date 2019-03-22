@@ -6,6 +6,7 @@ import decision_tree as dt
 
 def best_depth(impurity, data, labels):
     train_data, test_data, train_labels, test_labels = train_test_split(data, labels, train_size=0.8, test_size=0.2)
+    print(np.mean(train_labels), np.mean(test_labels))
 
     for max_depth in range(1, 11):
         tree = dt.DecisionTree(impurity, max_depth).build(train_data, train_labels)
