@@ -10,8 +10,8 @@ def roc(data, labels):
 
     true_positive = labels1
     false_positive = labels0
-    tp_list = []
-    fp_list = []
+    tp_list = [true_positive]
+    fp_list = [false_positive]
     for i, (x, curr_label) in enumerate(zip(data[sorted_index], labels[sorted_index])):
         if i == 0:
             prev = x
@@ -24,7 +24,7 @@ def roc(data, labels):
         prev = x
         fp_list = [false_positive] + fp_list
         tp_list = [true_positive] + tp_list
-    return np.array(tp_list) / labels1, np.array(fp_list) / labels0
+    return np.array([0] + tp_list) / labels1, np.array([0] + fp_list) / labels0
 
 
 def roc_auc(data, labels):
@@ -43,3 +43,11 @@ def evaluate_best_features(data, labels):
         axes[i].plot(fp_list, tp_list)
         axes[i].set_title("feature: %i, roc_auc: %.3f" % (feature_idx, auc))
     plt.show()
+
+
+def evaluate_roc_auc(feature, labels, title):
+    tp_list, fp_list = roc(feature, labels)
+    plt.figure()
+    plt.plot(fp_list, tp_list)
+    plt.title(title + "\nroc_auc: %.3f" % roc_auc(feature, labels))
+    plt.pause(0.001)

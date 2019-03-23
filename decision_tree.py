@@ -21,6 +21,7 @@ def gini_index(labels):
 
 class DecisionTree:
     def __init__(self, impurity, max_depth):
+        self.probability = None
         self.impurity = impurity
         self.max_depth = max_depth
         self.depth = 0
@@ -37,6 +38,7 @@ class DecisionTree:
     def build(self, data, labels):
         self.node = collections.Counter(labels).most_common(1)[0][0]
         if self.max_depth == 0:
+            self.probability = labels.sum() / labels.shape[0]
             return self
         res_IG = 0
         for tag_id in range(data.shape[1]):
@@ -52,10 +54,12 @@ class DecisionTree:
                     self.threshold = threshold
                     self.tag_id = tag_id
         if res_IG > 0:
-            self.create_branches(res_IG, data, labels)
+            self.create_branches(data, labels)
+        else:
+            self.probability = labels.sum() / labels.shape[0]
         return self
 
-    def create_branches(self, IG, data, labels):
+    def create_branches(self, data, labels):
         self.is_leaf = False
         l_data = data[:, self.tag_id] <= self.threshold
         self.left = DecisionTree(self.impurity, self.max_depth - 1).build(data[l_data], labels[l_data])
@@ -72,3 +76,13 @@ class DecisionTree:
         r_data = data[:, self.tag_id] > self.threshold
         labels[r_data] = self.right.predict(data[r_data])
         return labels
+
+    def predict_probability(self, data):
+        if self.is_leaf:
+            return np.zeros(data.shape[0]) + self.probability
+        new_tag = np.zeros(data.shape[0])
+        l_data = data[:, self.tag_id] <= self.threshold
+        new_tag[l_data] = self.left.predict_probability(data[l_data])
+        r_data = data[:, self.tag_id] > self.threshold
+        new_tag[r_data] = self.right.predict_probability(data[r_data])
+        return new_tag
