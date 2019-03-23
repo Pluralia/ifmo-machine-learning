@@ -46,11 +46,9 @@ plt.ion()
 # impurity_list = [dt.misclass_err, dt.entropy, dt.gini_index]
 # for i, impurity in enumerate(impurity_list):
 #     print("impurity: " + impurity.__name__)
-#
 #     max_depth, tree = get_best_tree(impurity, c_tr_data, c_te_data, c_tr_labels, c_te_labels)
-#     new_tag = tree.predict_probability(c_data)
-#
-#     roc.evaluate_roc_auc(new_tag, c_labels, impurity.__name__ + " max_depth: " + max_depth.__str__())
+#     new_tag = tree.predict_probability(c_te_data)
+#     roc.evaluate_roc_auc(new_tag, c_te_labels, impurity.__name__ + " max_depth: " + max_depth.__str__())
 
 # spam
 s_df = pd.read_csv("spam.csv")
@@ -63,12 +61,9 @@ s_tr_data, s_te_data, s_tr_labels, s_te_labels = train_test_split(s_data, s_labe
 impurity_list = [dt.misclass_err, dt.entropy, dt.gini_index]
 for i, impurity in enumerate(impurity_list):
     print("impurity: " + impurity.__name__)
-
     max_depth, tree = get_best_tree(impurity, s_tr_data, s_te_data, s_tr_labels, s_te_labels)
-    new_tag = tree.predict_probability(s_data)
-
-    roc.evaluate_roc_auc(new_tag, s_labels, impurity.__name__ + " max_depth: " + max_depth.__str__())
-
+    new_tag = tree.predict_probability(s_te_data)
+    roc.evaluate_roc_auc(new_tag, s_te_labels, impurity.__name__ + " max_depth: " + max_depth.__str__())
 
 
 plt.ioff()
