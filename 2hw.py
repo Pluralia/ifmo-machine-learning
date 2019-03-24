@@ -6,8 +6,8 @@ import random_forest as rf
 import roc
 
 
-tree_num = [5] #, 10, 20, 30, 50, 100]
-max_depth = [2] #, 3, 5, 7, 10]
+tree_num = [5, 10, 20, 30, 50, 100]
+max_depth = [2, 3, 5, 7, 10]
 
 
 # cancer
@@ -60,7 +60,6 @@ for tn in tree_num:
 
 new_tag = forest.predict_probability(best_tn, best_md, s_te_data)
 roc.evaluate_roc_auc(new_tag, s_te_labels, "tree_num: " + best_tn.__str__() + " | max_depth: " + best_md.__str__() + " | accuracy: %.3f" % best_acc)
-
 
 
 plt.show()
