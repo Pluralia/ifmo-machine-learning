@@ -1,8 +1,7 @@
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from PIL import Image
+
 
 # mnist
 # name = 'mnist'
@@ -29,6 +28,8 @@ for dir in os.listdir(name):
         label[iter] = ord(dir[0])
         data[iter] = plt.imread(f'{name}/{dir}/{file_name}')
         iter += 1
+
+print(data.shape)
 
 plt.ion()
 
