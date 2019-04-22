@@ -20,13 +20,14 @@ name = 'mnist'
 df = pd.read_csv("mnist.csv")
 labels = df['label'].values
 data = df.values[:, 1:].reshape(10000, 28, 28)
+data = data.astype(np.float32) / 255
 
 labels = np.eye(10)[labels]
 train_data, test_data, train_labels, test_labels = train_test_split(data, labels, train_size=0.8, test_size=0.2)
 
-acivation_name = 'sigmoid'
+# acivation_name = 'sigmoid'
 # acivation_name = 'tanh'
-# acivation_name = 'ReLu'
+acivation_name = 'ReLu'
 activation = get_activation(acivation_name)
 
 
@@ -47,10 +48,9 @@ X = tf.placeholder(tf.float32, shape=[None, 28, 28])
 x_image = tf.reshape(X, [-1, 28, 28, 1])
 Y = tf.placeholder(tf.float32, shape=[None, 10])
 
-
-conv1 = activation(conv_layer(x_image, 1, 8))
-conv2 = activation(conv_layer(conv1, 8, 8))
-conv_out = activation(conv_layer(conv2, 8, 8))
+conv1 = conv_layer(x_image, 1, 8)
+conv2 = conv_layer(conv1, 8, 8)
+conv_out = conv_layer(conv2, 8, 8)
 
 flattened = tf.reshape(conv_out, [-1, 28 * 28 * 8])
 
