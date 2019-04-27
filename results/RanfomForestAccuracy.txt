@@ -1,0 +1,65 @@
+cancer
+tree_num:  5  |  max_depth:  2  |  accuracy: 0.930
+tree_num:  5  |  max_depth:  3  |  accuracy: 0.947
+tree_num:  5  |  max_depth:  5  |  accuracy: 0.965
+tree_num:  5  |  max_depth:  7  |  accuracy: 0.956
+tree_num:  5  |  max_depth:  10  |  accuracy: 0.956
+tree_num:  10  |  max_depth:  2  |  accuracy: 0.939
+tree_num:  10  |  max_depth:  3  |  accuracy: 0.956
+tree_num:  10  |  max_depth:  5  |  accuracy: 0.974
+tree_num:  10  |  max_depth:  7  |  accuracy: 0.974
+tree_num:  10  |  max_depth:  10  |  accuracy: 0.974
+tree_num:  20  |  max_depth:  2  |  accuracy: 0.939
+tree_num:  20  |  max_depth:  3  |  accuracy: 0.947
+tree_num:  20  |  max_depth:  5  |  accuracy: 0.965
+tree_num:  20  |  max_depth:  7  |  accuracy: 0.956
+tree_num:  20  |  max_depth:  10  |  accuracy: 0.956
+tree_num:  30  |  max_depth:  2  |  accuracy: 0.939
+tree_num:  30  |  max_depth:  3  |  accuracy: 0.965
+tree_num:  30  |  max_depth:  5  |  accuracy: 0.965
+tree_num:  30  |  max_depth:  7  |  accuracy: 0.965
+tree_num:  30  |  max_depth:  10  |  accuracy: 0.965
+tree_num:  50  |  max_depth:  2  |  accuracy: 0.947
+tree_num:  50  |  max_depth:  3  |  accuracy: 0.965
+tree_num:  50  |  max_depth:  5  |  accuracy: 0.974
+tree_num:  50  |  max_depth:  7  |  accuracy: 0.965
+tree_num:  50  |  max_depth:  10  |  accuracy: 0.965
+tree_num:  100  |  max_depth:  2  |  accuracy: 0.947
+tree_num:  100  |  max_depth:  3  |  accuracy: 0.965
+tree_num:  100  |  max_depth:  5  |  accuracy: 0.974
+tree_num:  100  |  max_depth:  7  |  accuracy: 0.974
+tree_num:  100  |  max_depth:  10  |  accuracy: 0.974
+
+
+spam
+tree_num:  5  |  max_depth:  2  |  accuracy: 0.887
+tree_num:  5  |  max_depth:  3  |  accuracy: 0.913
+tree_num:  5  |  max_depth:  5  |  accuracy: 0.923
+tree_num:  5  |  max_depth:  7  |  accuracy: 0.923
+tree_num:  5  |  max_depth:  10  |  accuracy: 0.925
+tree_num:  10  |  max_depth:  2  |  accuracy: 0.859
+tree_num:  10  |  max_depth:  3  |  accuracy: 0.908
+tree_num:  10  |  max_depth:  5  |  accuracy: 0.923
+tree_num:  10  |  max_depth:  7  |  accuracy: 0.931
+tree_num:  10  |  max_depth:  10  |  accuracy: 0.931
+tree_num:  20  |  max_depth:  2  |  accuracy: 0.887
+tree_num:  20  |  max_depth:  3  |  accuracy: 0.922
+tree_num:  20  |  max_depth:  5  |  accuracy: 0.925
+tree_num:  20  |  max_depth:  7  |  accuracy: 0.931
+tree_num:  20  |  max_depth:  10  |  accuracy: 0.933
+tree_num:  30  |  max_depth:  2  |  accuracy: 0.888
+tree_num:  30  |  max_depth:  3  |  accuracy: 0.920
+tree_num:  30  |  max_depth:  5  |  accuracy: 0.925
+tree_num:  30  |  max_depth:  7  |  accuracy: 0.931
+tree_num:  30  |  max_depth:  10  |  accuracy: 0.932
+tree_num:  50  |  max_depth:  2  |  accuracy: 0.859
+tree_num:  50  |  max_depth:  3  |  accuracy: 0.909
+tree_num:  50  |  max_depth:  5  |  accuracy: 0.925
+tree_num:  50  |  max_depth:  7  |  accuracy: 0.929
+tree_num:  50  |  max_depth:  10  |  accuracy: 0.933
+tree_num:  100  |  max_depth:  2  |  accuracy: 0.860
+tree_num:  100  |  max_depth:  3  |  accuracy: 0.906
+tree_num:  100  |  max_depth:  5  |  accuracy: 0.925
+tree_num:  100  |  max_depth:  7  |  accuracy: 0.934
+tree_num:  100  |  max_depth:  10  |  accuracy: 0.934
+

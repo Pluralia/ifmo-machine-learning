@@ -1,0 +1,30 @@
+# CANCER
+
+RandomForest:
+# tree_num, max_depth = 5, 5
+Accuracy:  0.965
+All time:  20.032326698303223
+Predict time:  0.0013232231140136719
+
+SVM:
+# SVC(gamma='scale', kernel='linear', degree=1, probability=True)
+Accuracy:  0.965
+All time:  0.008846282958984375
+Predict time:  0.00044536590576171875
+
+-------------------------------------------------------------------
+
+# SPAM
+
+RandomForest:
+# tree_num, max_depth = 5, 3
+Accuracy:  0.9
+All time:  332.355331659317
+Predict time:  0.001539468765258789
+
+SVM:
+# SVC(gamma='scale', kernel='linear', degree=1, probability=True)
+Accuracy:  0.893
+All time:  1.848205327987671
+Predict time:  0.06488847732543945
+
