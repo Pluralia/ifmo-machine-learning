@@ -4,33 +4,33 @@ import time
 
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
-import random_forest as rf
+from sklearn.ensemble import RandomForestClassifier
 
 
 # cancer
-# name = 'cancer'
-# df = pd.read_csv("cancer.csv")
-# labels = np.array([1 if l == 'M' else 0 for l in df['label'].values])
-# df = df.values
-# data = df[:, 1:]
-# data = data / np.max(data, axis=0)
+name = 'cancer'
+df = pd.read_csv("cancer.csv")
+labels = np.array([1 if l == 'M' else 0 for l in df['label'].values])
+df = df.values
+data = df[:, 1:]
+data = data / np.max(data, axis=0)
 
 # spam
-name = 'spam'
-df = pd.read_csv("spam.csv")
-df = df.values
-labels = df[:, -1]
-data = df[:, 0:-1]
-data = data / np.max(data, axis=0)
+# name = 'spam'
+# df = pd.read_csv("spam.csv")
+# df = df.values
+# labels = df[:, -1]
+# data = df[:, 0:-1]
+# data = data / np.max(data, axis=0)
 
 tr_data, te_data, tr_labels, te_labels = train_test_split(data, labels, train_size=0.8, test_size=0.2)
 
 # Random Forest
 rf_start_build = time.time()
-tree_num, max_depth = 5, 3
-forest = rf.RandomForest(tree_num, max_depth).build(tr_data, tr_labels)
+clf = RandomForestClassifier(n_estimators=5, max_depth=5)
+clf.fit(tr_data, tr_labels)
 rf_start_predict = time.time()
-res = forest.predict(tree_num, max_depth, te_data)
+res = clf.predict(te_data)
 rf_finish = time.time()
 acc = round(sum(res == te_labels) / te_labels.shape[0], 3)
 print("RandomForest:")
