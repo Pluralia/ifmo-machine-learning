@@ -39,7 +39,7 @@ for (k, v) in idx_dict.items():
 formatting_data = np.zeros((data.shape[0], len(word_dict)))
 for j in range(0, data.shape[0]):
     for word in data[j]:
-        formatting_data[j, word_dict[word]] += 1
+        formatting_data[j, word_dict[word]] = 1
 data = formatting_data
 tr_data, val_data, tr_labels, val_labels = train_test_split(data, labels, train_size=0.8, test_size=0.2)
 
