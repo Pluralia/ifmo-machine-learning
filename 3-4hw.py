@@ -6,6 +6,9 @@ import pandas as pd
 def r_squared(real_y, predict_y):
     return 1 - np.sum((real_y - predict_y) ** 2) / np.sum((real_y - real_y.mean()) ** 2)
 
+
+power = 6
+
 ########################################################################################################################
 
 
@@ -23,12 +26,11 @@ data = c_df.values.astype(np.float32)
 x = data[:, 0]
 y = data[:, 1]
 
-power = 11
-
 X = make_x(x, power)
 W = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(y)
 predict = X.dot(W)
-print(r_squared(y, predict))
+old = r_squared(y, predict)
+print(old)
 
 
 max = 0
@@ -47,6 +49,7 @@ for i in range(201):
 print(max, alpha_max)
 
 plt.plot(0.01 * (np.arange(201) - 100), r_square, 'r')
+plt.title(f'noisysine (power={power}): ' + "r-square: %.3f;\n" % old + "regular r-square: %.3f " % max + f'(alpha={alpha_max})')
 plt.show()
 
 # alfa = 0.1
@@ -76,13 +79,12 @@ data = c_df.values.astype(np.float32)
 x = data[:, :6]
 y = data[:, 6]
 
-power = 6
-
 
 X = make_x(x, power)
 W = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(y)
 predict = X.dot(W)
-print(r_squared(y, predict))
+old = r_squared(y, predict)
+print(old)
 
 
 max = 0
@@ -102,4 +104,5 @@ for i in range(201):
 print(max, alpha_max)
 
 plt.plot(0.01 * (np.arange(201) - 100), r_square, 'r')
+plt.title(f'hydrodynamics (power={power}): ' + "r-square: %.3f;\n" % old + "regular r-square: %.3f " % max + f'(alpha={alpha_max})')
 plt.show()
