@@ -42,7 +42,6 @@ for i in range(201):
     r_square[i] = r_squared(y, predict_reg)
     if r_square[i] < 0:
         r_square[i] = r_square[i - 1]
-    # print(r_square, alpha)
     if max < r_square[i]:
         max = r_square[i]
         alpha_max = alpha
@@ -52,7 +51,6 @@ plt.plot(0.01 * (np.arange(201) - 100), r_square, 'r')
 plt.title(f'noisysine (power={power}): ' + "r-square: %.3f;\n" % old + "regular r-square: %.3f " % max + f'(alpha={alpha_max})')
 plt.show()
 
-# alfa = 0.1
 alpha = alpha_max
 W_reg = (np.linalg.inv(X.T.dot(X) + alpha * np.eye(power + 1)).dot(X.T)).dot(y)
 predict_reg = X.dot(W_reg)
@@ -97,7 +95,6 @@ for i in range(201):
     r_square[i] = r_squared(y, predict_reg)
     if r_square[i] < 0:
         r_square[i] = r_square[i - 1]
-    # print(r_square, alpha)
     if max < r_square[i]:
         max = r_square[i]
         alpha_max = alpha
