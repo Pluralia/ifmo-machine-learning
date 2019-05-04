@@ -59,6 +59,7 @@ def posterior_prob(mean, var, data):
 
 # train data & labels + validate data
 def predict(tr_data, tr_labels, val_data):
+    alpha = 0.0000000001
     size = val_data.shape[0]
     prior = prior_prob(tr_labels)
     mean, var = mean_variance(tr_data, tr_labels)
@@ -68,13 +69,10 @@ def predict(tr_data, tr_labels, val_data):
     for k in range(0, size):
         total_prob = 0
         for j in range(0, 2):
-            total_prob += posterior[k, j] * prior[j]
+            total_prob += posterior[k, j] * prior[j] + alpha
         prob = np.ones(2)
         for i in range(0, 2):
-            if total_prob == 0:
-                prob[i] = 0
-            else:
-                prob[i] = (posterior[k, i] * prior[i]) / total_prob
+            prob[i] = (posterior[k, i] * prior[i]) / total_prob
         labels[k] = int(prob.argmax())
         feature_prob[k] = prob[1]
     return labels, feature_prob
