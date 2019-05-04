@@ -1,0 +1,426 @@
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+NOISYSINE
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+degree=1 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.03670413747862855
+Validate score: 0.12208965107832516
+
+alpha=0.2
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.30000000000000004
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.4
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.5
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.6000000000000001
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.7000000000000001
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.8
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.9
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=1.0
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+degree=2 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.03670413747862855
+Validate score: 0.12208965107832516
+
+alpha=0.2
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.30000000000000004
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.4
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.5
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.6000000000000001
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.7000000000000001
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.8
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.9
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=1.0
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+degree=3 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.154965787310407
+Validate score: 0.38395461654371577
+
+alpha=0.2
+Training score: 0.13560378656430272
+Validate score: 0.31561154993047513
+
+alpha=0.30000000000000004
+Training score: 0.11647559645758676
+Validate score: 0.23914410558150154
+
+alpha=0.4
+Training score: 0.0896961596168182
+Validate score: 0.15678579329197895
+
+alpha=0.5
+Training score: 0.05526541159783849
+Validate score: 0.06853674189385961
+
+alpha=0.6000000000000001
+Training score: 0.013183377258112694
+Validate score: -0.025603119334099977
+
+alpha=0.7000000000000001
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.8
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.9
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=1.0
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+degree=4 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.17484820629417241
+Validate score: 0.3929637991226954
+
+alpha=0.2
+Training score: 0.14363593708014133
+Validate score: 0.3172269291312768
+
+alpha=0.30000000000000004
+Training score: 0.11647559645758676
+Validate score: 0.23914410558150154
+
+alpha=0.4
+Training score: 0.0896961596168182
+Validate score: 0.15678579329197895
+
+alpha=0.5
+Training score: 0.05526541159783849
+Validate score: 0.06853674189385961
+
+alpha=0.6000000000000001
+Training score: 0.013183377258112694
+Validate score: -0.025603119334099977
+
+alpha=0.7000000000000001
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.8
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=0.9
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+alpha=1.0
+Training score: 0.0
+Validate score: -0.053078152747134455
+
+degree=5 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.17485108850049225
+Validate score: 0.39297953996739754
+
+alpha=0.2
+Training score: 0.12022981947372025
+Validate score: 0.21192824439514557
+
+alpha=0.30000000000000004
+Training score: 0.09586892745369291
+Validate score: 0.19649386687918735
+
+alpha=0.4
+Training score: 0.09284435352313725
+Validate score: 0.17843855888200777
+
+alpha=0.5
+Training score: 0.0889556384701129
+Validate score: 0.1599527149500184
+
+alpha=0.6000000000000001
+Training score: 0.08420270934611795
+Validate score: 0.14103611695504614
+
+alpha=0.7000000000000001
+Training score: 0.07858567987735421
+Validate score: 0.12168888691253787
+
+alpha=0.8
+Training score: 0.07210443716164494
+Validate score: 0.10191107662793454
+
+alpha=0.9
+Training score: 0.06475905743365395
+Validate score: 0.08170254806700172
+
+alpha=1.0
+Training score: 0.05654952038967409
+Validate score: 0.06106343892314858
+
+best_alpha=0.1, best_degree=5, r-score=0.39297953996739754
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+HYDRODYNAMICS
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+degree=1 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.6601167654456193
+Validate score: 0.6300622244254432
+
+alpha=0.2
+Training score: 0.6595783409016078
+Validate score: 0.6346004293539148
+
+alpha=0.30000000000000004
+Training score: 0.6589690466297268
+Validate score: 0.63702944464392
+
+alpha=0.4
+Training score: 0.6581160643399674
+Validate score: 0.6391483896957233
+
+alpha=0.5
+Training score: 0.6572899897231477
+Validate score: 0.6407522562447028
+
+alpha=0.6000000000000001
+Training score: 0.6565003619029119
+Validate score: 0.6420344975110561
+
+alpha=0.7000000000000001
+Training score: 0.6559640546076155
+Validate score: 0.6430799027917243
+
+alpha=0.8
+Training score: 0.6553452619383273
+Validate score: 0.6440132882779389
+
+alpha=0.9
+Training score: 0.6546439818692711
+Validate score: 0.644834653663223
+
+alpha=1.0
+Training score: 0.6538601648914766
+Validate score: 0.6455439808887595
+
+degree=2 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.9346929382656934
+Validate score: 0.8952660800803298
+
+alpha=0.2
+Training score: 0.9335369536116135
+Validate score: 0.8994025610657599
+
+alpha=0.30000000000000004
+Training score: 0.9318294286218168
+Validate score: 0.9025565721169774
+
+alpha=0.4
+Training score: 0.9300934411529939
+Validate score: 0.9053631133369658
+
+alpha=0.5
+Training score: 0.9281806838576325
+Validate score: 0.908220753999807
+
+alpha=0.6000000000000001
+Training score: 0.926450661522277
+Validate score: 0.9093782466617089
+
+alpha=0.7000000000000001
+Training score: 0.9246856698868228
+Validate score: 0.9094531031175608
+
+alpha=0.8
+Training score: 0.922649235831947
+Validate score: 0.9092048770503315
+
+alpha=0.9
+Training score: 0.9209099024752239
+Validate score: 0.9090197932742669
+
+alpha=1.0
+Training score: 0.9190554478723385
+Validate score: 0.9086624142900396
+
+degree=3 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.9922395586225311
+Validate score: 0.9853806725640629
+
+alpha=0.2
+Training score: 0.9908922330446135
+Validate score: 0.9834584410545469
+
+alpha=0.30000000000000004
+Training score: 0.9892552841610808
+Validate score: 0.9813527478370179
+
+alpha=0.4
+Training score: 0.9874073746803758
+Validate score: 0.9790821416098209
+
+alpha=0.5
+Training score: 0.9855102314640355
+Validate score: 0.9768071057045385
+
+alpha=0.6000000000000001
+Training score: 0.9832523482690957
+Validate score: 0.9739072913624855
+
+alpha=0.7000000000000001
+Training score: 0.980585338097128
+Validate score: 0.9704570318880763
+
+alpha=0.8
+Training score: 0.9780554345716853
+Validate score: 0.9671071690722729
+
+alpha=0.9
+Training score: 0.9752903912376958
+Validate score: 0.9633997553886243
+
+alpha=1.0
+Training score: 0.9731472124786088
+Validate score: 0.9618360370220004
+
+degree=4 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.9980886198788395
+Validate score: 0.9967443764603282
+
+alpha=0.2
+Training score: 0.9962878684249835
+Validate score: 0.9947648309427667
+
+alpha=0.30000000000000004
+Training score: 0.9939953860565309
+Validate score: 0.9923099948575318
+
+alpha=0.4
+Training score: 0.9909372580850816
+Validate score: 0.9887983328601825
+
+alpha=0.5
+Training score: 0.9891324854151384
+Validate score: 0.9868134369064802
+
+alpha=0.6000000000000001
+Training score: 0.9873070703177895
+Validate score: 0.9849485714932067
+
+alpha=0.7000000000000001
+Training score: 0.9851603840850491
+Validate score: 0.9826521354970674
+
+alpha=0.8
+Training score: 0.9826960083959848
+Validate score: 0.9799503508514773
+
+alpha=0.9
+Training score: 0.9805006499496896
+Validate score: 0.977737049388031
+
+alpha=1.0
+Training score: 0.9790283913797121
+Validate score: 0.9770166672601179
+
+degree=5 ----------------------------------------------------------------------------------------------
+alpha=0.1
+Training score: 0.998245893076933
+Validate score: 0.996434339023764
+
+alpha=0.2
+Training score: 0.9965385228916012
+Validate score: 0.9948111579570678
+
+alpha=0.30000000000000004
+Training score: 0.9940935311952745
+Validate score: 0.9921219578685581
+
+alpha=0.4
+Training score: 0.9907153386244014
+Validate score: 0.9879685738669814
+
+alpha=0.5
+Training score: 0.9888129292999768
+Validate score: 0.9853429063449317
+
+alpha=0.6000000000000001
+Training score: 0.9865070458824836
+Validate score: 0.9817788471126161
+
+alpha=0.7000000000000001
+Training score: 0.983901766207432
+Validate score: 0.977389818116651
+
+alpha=0.8
+Training score: 0.9809917902776656
+Validate score: 0.9724528562593457
+
+alpha=0.9
+Training score: 0.9776427671712293
+Validate score: 0.966497293629549
+
+alpha=1.0
+Training score: 0.97436009731436
+Validate score: 0.9604942801784907
+
+best_alpha=0.1, best_degree=4, r-score=0.9967443764603282
