@@ -81,28 +81,35 @@ def gauss_predict(tr_data, tr_labels, val_data):
 
 # validate labels & train data
 def mult_posterior_prob(data, labels):
-    alpha = 0.0000000001
+    alpha = 0.001
     size = data.shape[0]
-    features_num = data.shape[1]
-    res = np.ones((2, features_num))
-    labels_count = np.array([size - np.sum(labels), np.sum(labels)]) + alpha * features_num
-    for k in range(0, size):
-        for i in range(0, 2):
-            for j in range(0, features_num):
-                res[i, k] *= (data[k, j] + alpha) / labels_count[i]
-    return res
+    feature_num = data.shape[1]
+    data += alpha
+    word = np.zeros((2, feature_num))
+    denom = np.zeros(2)
+    for k in range(size):
+        for j in range(2):
+            for i in range(feature_num):
+                if labels[k] == j:
+                    word[j, i] += data[k, i]
+                    denom[j] += data[k, i]
+    word[0, :] /= denom[0]
+    word[1, :] /= denom[1]
+    return word
 
 
 def mult_predict(tr_data, tr_labels, val_data):
+    labels_prob = prior_prob(tr_labels)
+    data_prob = mult_posterior_prob(tr_data, tr_labels)
     size = val_data.shape[0]
-    prior = prior_prob(tr_labels)
-    posterior = mult_posterior_prob(tr_data, tr_labels)
+    feature_num = val_data.shape[1]
     labels = np.zeros(size)
     feature_prob = np.zeros(size)
-    for k in range(0, size):
-        prob = np.ones(2)
-        for i in range(0, 2):
-            prob[i] = posterior[i, k] * prior[i]
-        labels[k] = int(prob.argmax())
-        feature_prob[k] = prob[0]
+    for k in range(size):
+        res = np.ones(2)
+        for j in range(2):
+            for i in range(feature_num):
+                res[j] *= labels_prob[j] * data_prob[j, i]
+        labels[k] = int(res.argmax())
+        feature_prob[k] = res[1]
     return labels, feature_prob
