@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import roc
 from gaussian_naive_bayes import *
@@ -16,10 +17,11 @@ tr_data, val_data, tr_labels, val_labels = train_test_split(data, labels, train_
 
 
 new_tr_labels, _ = predict(tr_data, tr_labels, tr_data)
-tr_accuracy = np.mean(new_tr_labels == tr_labels) / tr_data.shape[0]
-new_val_labels, features_prob = predict(tr_data, tr_labels, tr_data)
-val_accuracy = np.mean(new_val_labels == val_labels) / val_data.shape[0]
+tr_accuracy = np.sum(new_tr_labels == tr_labels) / tr_data.shape[0]
+new_val_labels, features_prob = predict(tr_data, tr_labels, val_data)
+val_accuracy = np.sum(new_val_labels == val_labels) / val_data.shape[0]
 print("Result for train data: ", tr_accuracy)
 print("Result for validate data: ", val_accuracy)
 
 roc.evaluate_roc_auc(features_prob, val_labels, "accuracy: %.3f" % val_accuracy)
+plt.show()
