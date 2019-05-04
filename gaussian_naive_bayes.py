@@ -51,7 +51,6 @@ def posterior_prob(mean, var, data):
             for j in range(0, features_num):
                 if var[i][j] == 0:
                     print("ZERO")
-                    res[k, i] = 1
                 else:
                     res[k, i] *= 1 / math.sqrt(2 * math.pi * var[i][j])
                     res[k, i] *= math.exp(-0.5 * pow(data[k, j] - mean[i][j], 2) / var[i][j])
