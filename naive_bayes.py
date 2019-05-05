@@ -89,6 +89,7 @@ def mult_posterior_prob(tr_data, tr_labels):
 
 # train data & labels + validate data
 def mult_predict(tr_data, tr_labels, val_data):
+    alpha = 1e-6
     data_prob = mult_posterior_prob(tr_data, tr_labels)
     size = val_data.shape[0]
     labels = np.zeros(size)
@@ -98,7 +99,7 @@ def mult_predict(tr_data, tr_labels, val_data):
         denom = 0
         for j in range(2):
             p = data_prob[j] * val_data[k] + (1 - data_prob[j]) * (1 - val_data[k])
-            lab_prob = np.sum(np.log(p + 1e-6))
+            lab_prob = np.sum(np.log(p + alpha))
             denom += np.exp(lab_prob)
             res[j] = np.exp(lab_prob) / denom
         labels[k] = int(res.argmax())
