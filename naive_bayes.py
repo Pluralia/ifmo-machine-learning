@@ -79,37 +79,28 @@ def gauss_predict(tr_data, tr_labels, val_data):
     return labels, feature_prob
 
 
-# validate labels & train data
-def mult_posterior_prob(data, labels):
-    alpha = 0.001
-    size = data.shape[0]
-    feature_num = data.shape[1]
-    data += alpha
-    word = np.zeros((2, feature_num))
-    denom = np.zeros(2)
-    for k in range(size):
-        for j in range(2):
-            for i in range(feature_num):
-                if labels[k] == j:
-                    word[j, i] += data[k, i]
-                    denom[j] += data[k, i]
-    word[0, :] /= denom[0]
-    word[1, :] /= denom[1]
-    return word
+# train labels & data
+def mult_posterior_prob(tr_data, tr_labels):
+    res = np.empty((2, tr_data.shape[1]))
+    for label in range(2):
+        res[label] = np.mean(tr_data[tr_labels == label], axis=0)
+    return res
 
 
+# train data & labels + validate data
 def mult_predict(tr_data, tr_labels, val_data):
-    labels_prob = prior_prob(tr_labels)
     data_prob = mult_posterior_prob(tr_data, tr_labels)
     size = val_data.shape[0]
-    feature_num = val_data.shape[1]
     labels = np.zeros(size)
     feature_prob = np.zeros(size)
     for k in range(size):
         res = np.ones(2)
+        denom = 0
         for j in range(2):
-            for i in range(feature_num):
-                res[j] *= labels_prob[j] * data_prob[j, i]
+            p = data_prob[j] * val_data[k] + (1 - data_prob[j]) * (1 - val_data[k])
+            lab_prob = np.sum(np.log(p + 1e-6))
+            denom += np.exp(lab_prob)
+            res[j] = np.exp(lab_prob) / denom
         labels[k] = int(res.argmax())
         feature_prob[k] = res[1]
     return labels, feature_prob
