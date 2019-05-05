@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 
 def r_squared(real_y, predict_y):
@@ -20,44 +21,45 @@ def make_x(x, power=1):
 
 
 # noisysine
-c_df = pd.read_csv('noisysine.csv')
-data = c_df.values.astype(np.float32)
+df = pd.read_csv('noisysine.csv')
+df = df.values.astype(np.float32)
+data = df[:, 0]
+labels = df[:, 1]
 
-x = data[:, 0]
-y = data[:, 1]
+X, x, Y, y = train_test_split(data, labels, train_size=0.8, test_size=0.2)
+X = make_x(X, power)
+x = make_x(x, power)
 
-X = make_x(x, power)
-W = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(y)
-predict = X.dot(W)
-old = r_squared(y, predict)
-print(old)
+W = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(Y)
+predict = x.dot(W)
+rsquare = r_squared(y, predict)
+print(rsquare)
 
 
-max = 0
+max_rsquare = 0
+max_alpha = 0
 r_square = np.empty(201)
 for i in range(201):
     alpha = 0.01 * (i - 100)
-    W_reg = (np.linalg.inv(X.T.dot(X) + alpha * np.eye(power + 1)).dot(X.T)).dot(y)
-    predict_reg = X.dot(W_reg)
-    r_square[i] = r_squared(y, predict_reg)
+    W_reg = (np.linalg.inv(X.T.dot(X) + alpha * np.eye(power + 1)).dot(X.T)).dot(Y)
+    r_square[i] = r_squared(y, x.dot(W_reg))
     if r_square[i] < 0:
         r_square[i] = r_square[i - 1]
-    if max < r_square[i]:
-        max = r_square[i]
-        alpha_max = alpha
-print(max, alpha_max)
+    if max_rsquare < r_square[i]:
+        max_rsquare = r_square[i]
+        max_alpha = alpha
+print(max_rsquare, max_alpha)
 
 plt.plot(0.01 * (np.arange(201) - 100), r_square, 'r')
-plt.title(f'noisysine (power={power}): ' + "r-square: %.3f;\n" % old + "regular r-square: %.3f " % max + f'(alpha={alpha_max})')
+plt.title(f'noisysine (power={power}): ' + "r-square: %.3f;\n" % rsquare + "regular r-square: %.3f " % max_rsquare + f'(alpha={max_alpha})')
 plt.show()
 
-alpha = alpha_max
-W_reg = (np.linalg.inv(X.T.dot(X) + alpha * np.eye(power + 1)).dot(X.T)).dot(y)
-predict_reg = X.dot(W_reg)
+alpha = max_alpha
+W_reg = (np.linalg.inv(X.T.dot(X) + alpha * np.eye(power + 1)).dot(X.T)).dot(Y)
 
-plt.plot(x, y, '.')
-plt.plot(x, predict, 'g')
-plt.plot(x, predict_reg, 'r')
+plt.plot(data, labels, '.')
+plt.plot(data, make_x(data, power).dot(W), 'g')
+plt.plot(data, make_x(data, power).dot(W_reg), 'r')
 plt.show()
 
 ########################################################################################################################
@@ -71,35 +73,35 @@ def make_x(x, power=1):
 
 
 # hydrodynamics
-c_df = pd.read_csv('hydrodynamics.csv')
-data = c_df.values.astype(np.float32)
+df = pd.read_csv('hydrodynamics.csv')
+df = df.values.astype(np.float32)
+data = df[:, :6]
+labels = df[:, 6]
 
-x = data[:, :6]
-y = data[:, 6]
+X, x, Y, y = train_test_split(data, labels, train_size=0.8, test_size=0.2)
+X = make_x(X, power)
+x = make_x(x, power)
+
+W = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(Y)
+rsquare = r_squared(y, x.dot(W))
+print(rsquare)
 
 
-X = make_x(x, power)
-W = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(y)
-predict = X.dot(W)
-old = r_squared(y, predict)
-print(old)
-
-
-max = 0
+max_rsquare = 0
+max_alpha = 0
 r_square = np.empty(201)
-I = np.eye(x.shape[1] * power + 1)
+I = np.eye(X.shape[1] * power + 1)
 for i in range(201):
     alpha = 0.01 * (i - 100)
-    W_reg = (np.linalg.inv(X.T.dot(X) + alpha * I).dot(X.T)).dot(y)
-    predict_reg = X.dot(W_reg)
-    r_square[i] = r_squared(y, predict_reg)
+    W_reg = (np.linalg.inv(X.T.dot(X) + alpha * I).dot(X.T)).dot(Y)
+    r_square[i] = r_squared(y, x.dot(W_reg))
     if r_square[i] < 0:
         r_square[i] = r_square[i - 1]
-    if max < r_square[i]:
-        max = r_square[i]
-        alpha_max = alpha
-print(max, alpha_max)
+    if max_rsquare < r_square[i]:
+        max_rsquare = r_square[i]
+        max_alpha = alpha
+print(max_rsquare, max_alpha)
 
 plt.plot(0.01 * (np.arange(201) - 100), r_square, 'r')
-plt.title(f'hydrodynamics (power={power}): ' + "r-square: %.3f;\n" % old + "regular r-square: %.3f " % max + f'(alpha={alpha_max})')
+plt.title(f'hydrodynamics (power={power}): ' + "r-square: %.3f;\n" % rsquare + "regular r-square: %.3f " % max_rsquare + f'(alpha={max_alpha})')
 plt.show()
