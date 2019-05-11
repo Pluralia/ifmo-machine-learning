@@ -1,3 +1,4 @@
+import copy
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -39,3 +40,19 @@ def build_plot(x, y, idxs):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
+
+
+def random_swap(func, path):
+    pair_num = 20
+    tmp_path = copy.copy(path)
+    random.shuffle(tmp_path)
+    best_dist = 1e6
+    best_path = None
+    for (i, j) in list(zip(tmp_path[:pair_num], tmp_path[pair_num:2*pair_num])):
+        swap_path = copy.copy(path)
+        swap_path[i], swap_path[j] = swap_path[j], swap_path[i]
+        swap_dist = func(swap_path)
+        if best_dist > swap_dist:
+            best_dist = swap_dist
+            best_path = swap_path
+    return best_path
