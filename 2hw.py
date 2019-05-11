@@ -5,6 +5,27 @@ import lib
 import random
 
 
+def random_swap(size, path):
+    for i in range(1000):
+        pair_num = 20
+        tmp_path = list(range(size))
+        random.shuffle(tmp_path)
+        idx_x = tmp_path[:pair_num]
+        random.shuffle(tmp_path)
+        idx_y = tmp_path[:pair_num]
+        best_dist = 1e6
+        best_path = None
+        for (i, j) in list(zip(idx_x, idx_y)):
+            swap_path = copy.copy(path)
+            swap_path[i], swap_path[j] = swap_path[j], swap_path[i]
+            swap_dist = count_dist(swap_path)
+            if best_dist > swap_dist:
+                best_dist = swap_dist
+                best_path = swap_path
+        path = best_path
+    return path
+
+
 # tsp
 df = pd.read_csv("tsp.csv")
 df = df.values
@@ -19,7 +40,7 @@ best_dist = 1e6
 for i in range(100):
     init_path = list(range(size))
     random.shuffle(init_path)
-    path = lib.random_swap(count_dist, size, init_path)
+    path = random_swap(size, init_path)
     dist = count_dist(path)
     if dist < best_dist:
         best_path = path
