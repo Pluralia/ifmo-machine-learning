@@ -19,7 +19,7 @@ best_dist = 1e6
 for i in range(1000000):
     init_path = list(range(size))
     random.shuffle(init_path)
-    path = lib.random_swap(count_dist, init_path)
+    path = lib.random_swap(count_dist, size, init_path)
     dist = count_dist(path)
     if dist < best_dist:
         best_path = path
