@@ -1,5 +1,4 @@
 import copy
-
 import math
 import numpy as np
 import pandas as pd
@@ -8,22 +7,24 @@ import lib
 import random
 
 
-def annealing(size, curr_path):
+def annealing(size, path):
     temp = 1e6
     delta = np.zeros((size, size))
     while True:
-        curr_dist = count_dist(curr_path)
+        dist = count_dist(path)
         for i in range(size):
             for j in range(i + 1, size):
-                swap_path = copy.copy(curr_path)
+                swap_path = copy.copy(path)
                 swap_path[i], swap_path[j] = swap_path[j], swap_path[i]
                 swap_dist = count_dist(swap_path)
-                delta[i][j] = curr_dist - swap_dist
+                delta[i][j] = dist - swap_dist
         probs = np.zeros((size, size))
         for i in range(size):
             for j in range(i + 1, size):
                 probs[i][j] = math.exp(delta[i][j] / temp)
         probs /= np.sum(probs)
+        # prob = np.max(probs)
+        # if np.random.uniform(0.0, 1.0) < prob:
         (i, j) = np.unravel_index(probs.argmax(), probs.shape)
         path[i], path[j] = path[j], path[i]
         temp *= 0.5
@@ -51,5 +52,6 @@ for i in range(100):
         best_path = path
         best_dist = dist
     print(i, best_dist)
+    if i % 10 == 0:
+        lib.build_plot(x, y, best_path)
 
-lib.build_plot(x, y, best_path)
