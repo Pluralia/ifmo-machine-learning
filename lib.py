@@ -46,9 +46,12 @@ def random_swap(func, path):
     pair_num = 20
     tmp_path = copy.copy(path)
     random.shuffle(tmp_path)
+    idx_x = tmp_path[:pair_num]
+    random.shuffle(tmp_path)
+    idx_y = tmp_path[:pair_num]
     best_dist = 1e6
     best_path = None
-    for (i, j) in list(zip(tmp_path[:pair_num], tmp_path[pair_num:2*pair_num])):
+    for (i, j) in list(zip(idx_x, idx_y)):
         swap_path = copy.copy(path)
         swap_path[i], swap_path[j] = swap_path[j], swap_path[i]
         swap_dist = func(swap_path)
