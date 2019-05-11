@@ -16,7 +16,7 @@ count_dist = partial(lib.count_dist, x, y)
 best_path = list(range(size))
 best_dist = 1e6
 
-for i in range(1000000):
+for i in range(100):
     init_path = list(range(size))
     random.shuffle(init_path)
     path = lib.random_swap(count_dist, size, init_path)
