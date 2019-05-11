@@ -6,23 +6,9 @@ import random
 
 
 def random_swap(size, path):
-    for i in range(1000):
-        pair_num = 20
-        tmp_path = list(range(size))
-        random.shuffle(tmp_path)
-        idx_x = tmp_path[:pair_num]
-        random.shuffle(tmp_path)
-        idx_y = tmp_path[:pair_num]
-        best_dist = 1e6
-        best_path = None
-        for (i, j) in list(zip(idx_x, idx_y)):
-            swap_path = copy.copy(path)
-            swap_path[i], swap_path[j] = swap_path[j], swap_path[i]
-            swap_dist = count_dist(swap_path)
-            if best_dist > swap_dist:
-                best_dist = swap_dist
-                best_path = swap_path
-        path = best_path
+    for r in range(1000):
+        i, j = random.randint(0, size - 1), random.randint(0, size - 1)
+        path[i], path[j] = path[j], path[i]
     return path
 
 
@@ -37,7 +23,7 @@ count_dist = partial(lib.count_dist, x, y)
 best_path = list(range(size))
 best_dist = 1e6
 
-for i in range(100):
+for i in range(1000000):
     init_path = list(range(size))
     random.shuffle(init_path)
     path = random_swap(size, init_path)
